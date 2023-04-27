@@ -58,7 +58,7 @@ Builder.load_string('''
         MDTopAppBar:
             title: "Ввод вопроса"
             anchor_title: "right"
-            left_action_items: [["back", lambda x: app.button_back_2_click()]]        
+            left_action_items: [["arrow-left", lambda x: app.button_back_2_click()]]        
 
         MDBoxLayout:
             orientation: "vertical"
@@ -104,7 +104,7 @@ Builder.load_string('''
         MDTopAppBar:
             title: "Список вопросов"
             anchor_title: "right"
-            left_action_items: [["back", lambda x: app.button_back_2_click()]]        
+            left_action_items: [["arrow-left", lambda x: app.button_back_2_click()]]        
 
         MDBoxLayout:
             orientation: "vertical"
@@ -185,116 +185,4 @@ class MainApp(MDApp):
 MainApp().run()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-'''
-from kivy.config import Config
-from kivymd.uix.button import MDFlatButton, MDFloatingActionButton, MDRoundFlatButton
-
-#Config.set('graphics', 'resizable', '0')
-Config.set('graphics', 'width', '380')
-Config.set('graphics', 'height', '675')
-from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.gridlayout import GridLayout
-from kivy.uix.label import Label
-from kivy.uix.floatlayout import FloatLayout
-from kivy.app import App
-from kivy.uix.widget import Widget
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.uix.boxlayout import BoxLayout
-from kivymd.app import MDApp
-from kivymd.uix.floatlayout import MDFloatLayout
-from kivymd.uix.tab import MDTabsBase
-from kivymd.icon_definitions import md_icons
-from kivy.lang import Builder
-
-
-class DemoApp(MDApp):
-    def build(self):
-        screen = Screen()
-        btn1 = MDRoundFlatButton(text='Hello World', pos_hint={'center_x': 0.5, 'center_y': 0.5})
-
-        btn2 = MDRoundFlatButton(text='Hello World', pos_hint={'center_x': 0.5, 'center_y': 0.4})
-
-        btn3 = MDRoundFlatButton(text='Hello World', pos_hint={'center_x': 0.5, 'center_y': 0.3})
-
-        screen.add_widget(btn1)
-        screen.add_widget(btn2)
-        screen.add_widget(btn3)
-        return screen
-
-
-DemoApp().run()
-
-
-
-
-"""
-class AppCore(Widget):
-    pass
-
-'''
-'''
-class MyGridLayout(GridLayout):
-    def __init__(self, **kwargs):
-        super(MyGridLayout, self).__init__(**kwargs)
-        # Число колонок
-        self.cols = 1
-        self.col_default_width = 100
-        self.row_default_height = 350
-        # Добавим виджет
-        self.add_widget(Label(text='Флеш-Карточки', font_size=30), size_hint_x=100, size_hint_y=100)
-        self.add_widget(Button(size_hint_x=100, size_hint_y=100))
-        self.add_widget(Button(background_color=(1, 0, 0, 1), size_hint_x=100, size_hint_y=100))
-'''
-
-'''
-class MyApp(App):
-    def build(self):
-        return AppCore()
-
-    # def btn_press(self, instance):
-    #     print("Кнопка нажата")
-    #     instance.text = 'hi wrld'
-
-
-def run_app():
-    MyApp.run()
-
-
-if __name__ == "__main__":
-    run_app()
-
-'''
-'''return Button(text="Старт",
-                             font_size=30,
-                             on_press=self.btn_press,
-                             background_color=(.30, .69, .31, 1),
-                             background_normal='',
-                             size_hint=(.5, .25),
-                             pos=(0, 0))'''
 
