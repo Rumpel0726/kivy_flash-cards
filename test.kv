@@ -1,19 +1,29 @@
-<AppCore>
-    BoxLayout:
-        orientation: "vertical"
-        center: root.center
+<MainWidget>:
+    orientation: 'vertical'
+    padding: 20
+    spacing: 20
 
-        size: 300, 300
-        space: 10, 10
-
-        Button:
-            text: "1Hello"
-            size: 175, 150
-        Button:
-            text: "2Hello"
-            size: 175, 150
-        Button:
-            text: "3Hello"
-            size: 175, 150
+    name_input: name
+    hello_label: hello
 
 
+    TextInput:
+        id: name
+        multiline: False
+        size_hint: (.5, None)
+        pos_hint:{"center_x":0.5, "top":1}
+        height: 50
+        font_size: 30
+
+    Label:
+        id: hello
+        font_size: 30
+        text: 'Напишите как вас зовут'
+
+    Button:
+        font_size: 30
+        text: 'Поздороваться'
+        size_hint: (.5, None)
+        pos_hint:{"center_x":0.5, "top":1}
+
+        on_press: root.say_hello()
