@@ -345,6 +345,13 @@ class MainApp(MDApp):
         sm.get_screen('Activity_2').ids.question_value.text = ""
 
     def button_train_click(self):
+        c.execute("SELECT count(id_) FROM my_questions")
+        records = c.fetchone()
+        print(records[0])
+        if records[0] == 0:
+            self.show_toast("Вы не можете тренероваться с пустым списком карточек!")
+            return
+
         sm.transition.direction = 'left'
         sm.current = 'Activity_5'
         self.show_next_question()
@@ -354,8 +361,8 @@ class MainApp(MDApp):
         c.execute("SELECT count(id_) FROM my_questions")
         records = c.fetchone()
         print(records[0])
+
         nid = rn.randint(1, records[0])
-        print(nid)
 
         c.execute("SELECT * FROM my_questions")
         ind = 1
