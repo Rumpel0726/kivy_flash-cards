@@ -409,10 +409,17 @@ class MainApp(MDApp):
         print("Name: ", name_)
         value_ = sm.get_screen('Activity_2').ids.question_value.text
         print("Value: ", value_)
+        if name_ == "":
+            self.show_toast("Поле 'вопрос' должно быть заполенным!")
+            return
 
+        if value_ == "":
+            self.show_toast("Поле 'ответ' должно быть заполенным!")
+            return
         c.execute('INSERT INTO my_questions(question_name, question_value, question_grade) VALUES(:nm, :val, :grade)',
                   {'nm': name_, 'val': value_, 'grade': 1})
         conn.commit()
+        self.show_toast("Карточка успешно сохранена!")
 
     def mdlist_click(self, select_card):
         print(select_card.id)
@@ -437,10 +444,17 @@ class MainApp(MDApp):
         print("Value: ", value_)
         id_ = sm.get_screen('Activity_4').ids.question_id.text
         print("ID: ", id_)
+        if name_ == "":
+            self.show_toast("Поле 'вопрос' должно быть заполенным!")
+            return
 
+        if value_ == "":
+            self.show_toast("Поле 'ответ' должно быть заполенным!")
+            return
         c.execute('UPDATE my_questions SET question_name=:nm, question_value=:val, question_grade=:grade WHERE id_=:id',
                   {'nm': name_, 'val': value_, 'id': id_, 'grade': 1})
         conn.commit()
+        self.show_toast("Карточка успешно изменена!")
 
     def button_delete_click(self):
         id_ = sm.get_screen('Activity_4').ids.question_id.text
