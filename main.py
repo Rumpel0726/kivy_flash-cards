@@ -364,15 +364,41 @@ class MainApp(MDApp):
 
         nid = rn.randint(1, records[0])
 
-        c.execute("SELECT * FROM my_questions")
-        ind = 1
+        c.execute("SELECT * FROM my_questions order by id_")
+        fl_exit = False
         records_all = c.fetchall()
+        while True:
+            ind = 1
+            for record in records_all:
+                if ind == nid:
+                    if rn.randint(1, 10) != 1 and record[3] == 1:
+                        self.show_question_info('Activity_5', record[0])
+                        fl_exit = True
+                        break
 
-        for record in records_all:
-            if ind == nid:
-                self.show_question_info('Activity_5', record[0])
+                    if rn.randint(1, 3) != 1 and record[3] == 2:
+                        self.show_question_info('Activity_5', record[0])
+                        fl_exit = True
+                        break
+
+                    if rn.randint(1, 2) != 1 and record[3] == 3:
+                        self.show_question_info('Activity_5', record[0])
+                        fl_exit = True
+                        break
+
+                    if rn.randint(1, 4) == 1 and record[3] == 4:
+                        self.show_question_info('Activity_5', record[0])
+                        fl_exit = True
+                        break
+
+                    if rn.randint(1, 10) == 1 and record[3] == 5:
+                        self.show_question_info('Activity_5', record[0])
+                        fl_exit = True
+                        break
+                ind += 1
+
+            if fl_exit:
                 break
-            ind += 1
 
     def button_back_2_click(self):
         sm.transition.direction = 'right'
